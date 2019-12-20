@@ -20,7 +20,7 @@ public class Profit implements Comparable<Profit> {
 	public String toString() {
 		DecimalFormat decimalFormat = new DecimalFormat("#.###");
 		String winningMoney = decimalFormat.format(calculateWinningMoney());
-		return String.format("순위: %s, 맞춘 개수: %s, 이율: %s", rank, matchCount, winningMoney);
+		return String.format("순위: %s, 맞춘 개수: %s, 이익: %s원", rank, matchCount, winningMoney);
 	}
 
 	public long calculateWinningMoney() {
