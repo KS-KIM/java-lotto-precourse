@@ -22,6 +22,7 @@ public class LottoGame {
 
 	private List<Lotto> lottos;
 	private WinningLotto winningLotto;
+	private LottoPurchaseMoney lottoPurchaseMoney;
 
 	public LottoGame(LottoMachine lottoMachine) {
 		this.lottoMachine = Objects.requireNonNull(lottoMachine);
@@ -38,7 +39,7 @@ public class LottoGame {
 	}
 
 	private void initLottos() {
-		LottoPurchaseMoney lottoPurchaseMoney = InputView.inputLottoPurchaseMoney();
+		lottoPurchaseMoney = InputView.inputLottoPurchaseMoney();
 		lottos = lottoMachine.purchase(lottoPurchaseMoney);
 		OutputView.showLottos(lottos);
 	}
@@ -51,6 +52,7 @@ public class LottoGame {
 		MatchResult matchResult = new MatchResult(lottos, winningLotto);
 		Profits profits = matchResult.calculateResult();
 		long totalProfits = profits.calculateTotalProfits();
-		OutputView.showResult(profits, totalProfits);
+		long profitRate = lottoPurchaseMoney.calculateProfitRate(totalProfits);
+		OutputView.showResult(profits, profitRate);
 	}
 }

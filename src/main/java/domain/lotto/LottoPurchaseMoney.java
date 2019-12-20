@@ -45,4 +45,8 @@ public class LottoPurchaseMoney {
 	public int calculatePurchaseCount() {
 		return money / PURCHASE_UNIT;
 	}
+
+	public long calculateProfitRate(long totalProfits) {
+		return (totalProfits - money) * 100 / money;
+	}
 }

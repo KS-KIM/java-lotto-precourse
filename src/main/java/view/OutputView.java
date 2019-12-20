@@ -15,7 +15,8 @@ import domain.lotto.Lotto;
  */
 public class OutputView {
 	private static final String SEPARATOR = "=================================================";
-	private static final String TOTAL_PROFITS_MESSAGE = "최종 수익: ";
+	private static final String TOTAL_PROFITS_MESSAGE = "최종 수익률: ";
+	private static final String PERCENT = "%";
 
 	// 묵시적 생성자 방지
 	private OutputView() {}
@@ -26,10 +27,10 @@ public class OutputView {
 				.collect(Collectors.joining("\n")));
 	}
 
-	public static void showResult(Profits profits, long totalProfits) {
+	public static void showResult(Profits profits, long profitRate) {
 		showProfits(profits);
 		showSeparator();
-		showTotalProfits(totalProfits);
+		showTotalProfits(profitRate);
 	}
 
 	private static void showProfits(Profits profits) {
@@ -42,8 +43,8 @@ public class OutputView {
 		System.out.println(SEPARATOR);
 	}
 
-	private static void showTotalProfits(long profits) {
-		String totalProfits = new DecimalFormat("#.###").format(profits);
-		System.out.println(TOTAL_PROFITS_MESSAGE + totalProfits);
+	private static void showTotalProfits(long profitRate) {
+		String totalProfits = new DecimalFormat("#.###").format(profitRate);
+		System.out.println(TOTAL_PROFITS_MESSAGE + totalProfits + PERCENT);
 	}
 }
